@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading URL</title>
+  <script src="index.js"></script>
+  <link rel="stylesheet" href="https://use.typekit.net/qyo5vvn.css">
+</head>
+<body>
+  <div class="logo">
+    <img src="images/icon.png" />
+  </div>
+  <div id="console-container" class="console">
+    <table style="width: 100%; height: 100%">
+      <tr>
+        <td id="console-log">
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="box rules">
+    <div class="header">
+      <div class="title">
+        Info
+      </div>
+      <hr>
+    </div>
+    <ul>
+      <li>Press F4 to access Job Menu</li>
+      <li>Visit the forums for more information and to purchase Ranks</li>
+    </ul>
+    <div class="header" style="margin-top: 32px">
+      <div class="title">
+        Rules
+      </div>
+    </div>
+    <hr>
+    <ul>
+      <li>RDM is forbidden and punishable by warn.</li>
+      <li>VDM is punishable by warning.</li>
+      <li>MRDM is forbidden to all players, staff included, and is punishable by ban.</li>
+      <li>FailRP is forbidden, and punishable by warn.</li>
+      <li>FearRP applies to Staff and Users, failure to comply is punishable by warn.</li>
+    </ul>
+  </div>
+  <div class="box borderless datetime">
+    <div class="header">
+      <div class="title">
+        <em>The time is currently</em>
+      </div>
+    </div>
+    <div class="title" id="datetime"></div>
+  </div>
+</body>
+<style>
+  html, body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  body {
+    background-color: black;
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: 400;
+    text-align: justify;
+  }
+
+  em {
+    opacity: 0.5;
+  }
+
+  .title {
+    width: 100%;
+    font-size: 2em;
+    font-weight: 1000;
+  }
+
+  .discordTitle {
+    width: 100%;
+    font-size: 1.35em;
+    font-weight: 1000;
+  }
+
+  .inviteCode {
+    margin-top: 32px;
+  }
+
+  .logo {
+    z-index: 10;
+    position: absolute;
+    right: calc(24px);
+    top: 24px;
+    text-align: center;
+  }
+
+  .logo img {
+    height: 200px;
+    width: auto;
+  }
+
+  .discordBox .header {
+    position: relative;
+  }
+
+  .discord_logo {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 35%;
+    margin-right: 35%;
+    height: auto;
+  }
+
+  .rules ul {
+    list-style: none;
+  }
+
+  .rules li {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  .discord_logo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+  }
+
+  .bg-image {
+    position: absolute;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.35;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 6s ease opacity;
+    animation-name: turn-zoom;
+    animation-duration: 36s;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes turn-zoom {
+    from {
+      transform: rotate(0deg) scale(1);
+    }
+    to {
+      transform: rotate(22.5deg) scale(2);
+    }
+  }
+
+  .box {
+    position: absolute;
+    /* border-radius: 8px; */
+    /* background-color: #1e1e1fca; */
+    padding: 8px;
+    /* border: 4px solid #fafafaca; */
+    color: white;
+    text-align: right;
+  }
+
+  .borderless {
+    border: none;
+    margin: 4px;
+  }
+
+  .rules {
+    width: 400px;
+    right: 24px;
+    top: calc(48px + 200px);
+  }
+
+  .datetime {
+    text-align: right;
+    width: 315px;
+    right: calc(48px + 200px + 24px);
+    top: 24px;
+  }
+
+  .hidden {
+    opacity: 0;
+  }
+
+  .header {
+    font-family: monospace;
+  }
+
+  .datetime .header {
+    text-align: right;
+  }
+
+  .pre-amp {
+    width: 100%;
+    height: 100%;
+    padding: 20vh 0;
+    font-size: 5vw;
+    font-weight: 100;
+    overflow: hidden;
+  }
+
+  .console {
+    position: absolute;
+    text-align: left;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px;
+    overflow: hidden;
+    transition: 6s ease all;
+    color: #fafafa;
+    font-family: consolas;
+  }
+
+  .misc {
+    color: tomato;
+  }
+
+  .status {
+    color: mediumturquoise;
+  }
+
+  .download {
+    color: rgb(119, 76, 129);
+  }
+
+  .detail {
+    color: mediumvioletred;
+  }
+
+  @keyframes close-down {
+    50% {
+      opacity: 1;
+    }
+    100% {
+      top: 100%;
+      opacity: 0;
+    }
+  }
+
+  .closed {
+    overflow: hidden;
+    animation-name: close-down;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+  }
+
+  #console-log {
+    vertical-align: bottom;
+  }
+</style>
+</html>
